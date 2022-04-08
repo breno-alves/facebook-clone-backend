@@ -1,4 +1,3 @@
-   
 {
   "compilerOptions": {
     "target": "es6",
@@ -11,7 +10,17 @@
     "rootDir": "./src",
     "strictPropertyInitialization": false,
     "baseUrl": "./src",
-    "paths": {},
+    "paths": {
+      "@modules/*": [
+        "modules/*"
+      ],
+      "@config/*": [
+        "config/*"
+      ],
+      "@shared/*": [
+        "shared/*"
+      ]
+    },
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
