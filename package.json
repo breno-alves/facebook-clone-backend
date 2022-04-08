@@ -15,5 +15,25 @@
   "bugs": {
     "url": "https://github.com/breno-alves/facebook-clone-backend/issues"
   },
-  "homepage": "https://github.com/breno-alves/facebook-clone-backend#readme"
+  "homepage": "https://github.com/breno-alves/facebook-clone-backend#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "typescript": "^4.6.3",
+    "@typescript-eslint/eslint-plugin": "^4.3.0",
+    "@typescript-eslint/parser": "^4.3.0",
+    "copyfiles": "^2.4.1",
+    "eslint": "6.8.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-import-resolver-typescript": "^2.3.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
+    "ts-node-dev": "^1.1.1",
+    "tsconfig-paths": "^3.9.0",
+    "tscpaths": "^0.0.9"
+  }
 }
