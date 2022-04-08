@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:server": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules ./src/shared/infra/http/app.ts",
+    "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "test:unit": "cross-env NODE_ENV=test jest --verbose --detectOpenHandles",
+    "migration:generate": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate -n",
+    "start": "node ./dist/shared/infra/http/app.js",
+    "build": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s ./src -o ./dist"
   },
   "repository": {
     "type": "git",
@@ -20,7 +25,10 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
-    "reflect-metadata": "^0.1.13"
+    "express-async-errors": "^3.1.1",
+    "reflect-metadata": "^0.1.13",
+    "ts-node-dev": "^1.1.8",
+    "typeorm": "^0.3.5"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
@@ -36,7 +44,6 @@
     "eslint-plugin-prettier": "^3.1.4",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
-    "ts-node-dev": "^1.1.1",
     "tsconfig-paths": "^3.9.0",
     "tscpaths": "^0.0.9",
     "typescript": "^4.6.3"

@@ -6,7 +6,7 @@ import cors from 'cors';
 
 import 'express-async-errors';
 
-import '@shared/infra/typeorm';
+// import '@shared/infra/typeorm';
 
 // import routes from '@shared/infra/http/routes/';
 import AppError from '@shared/errors/AppError';
