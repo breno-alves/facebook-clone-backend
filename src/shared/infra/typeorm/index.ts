@@ -8,10 +8,10 @@ const AppDataSource = new DataSource({
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  entities: ['src/modules/**/entities/*.ts'],
+  entities: ['./src/modules/**/entities/*.ts'],
   synchronize: true,
   logging: true,
-  migrations: ['src/shared/infra/typeorm/migrations/*.ts'],
+  migrations: ['./src/shared/infra/typeorm/migrations/*.ts'],
 });
 
 export default AppDataSource;
