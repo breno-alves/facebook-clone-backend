@@ -5,6 +5,7 @@ import 'express-async-errors';
 import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
+import path from 'path';
 
 import routes from '@shared/infra/http/routes/';
 import AppError from '@shared/errors/AppError';
@@ -21,6 +22,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
+app.use(
+  '/files',
+  express.static(path.resolve(__dirname, '..', 'tmp', 'uploads')),
+);
 
 app.use(routes);
 
