@@ -9,7 +9,9 @@
     "test:unit": "cross-env NODE_ENV=test jest --verbose --detectOpenHandles",
     "migration:generate": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate -- -d ./src/shared/infra/typeorm/index.ts",
     "start": "node ./dist/shared/infra/http/app.js",
-    "build": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s ./src -o ./dist"
+    "build": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s ./src -o ./dist",
+    "clean": "rimraf dist/",
+    "copy-files": "copyfiles -u 1 src/**/*.bin dist/"
   },
   "repository": {
     "type": "git",
