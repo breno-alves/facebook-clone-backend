@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "dev:server": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules ./src/shared/infra/http/app.ts",
-    "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js -d ./src/shared/infra/typeorm/index.ts",
     "test:unit": "cross-env NODE_ENV=test jest --verbose --detectOpenHandles",
-    "migration:generate": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate -n",
+    "migration:generate": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate -- -d ./src/shared/infra/typeorm/index.ts",
     "start": "node ./dist/shared/infra/http/app.js",
-    "build": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s ./src -o ./dist"
+    "build": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s ./src -o ./dist",
+    "clean": "rimraf dist/",
+    "copy-files": "copyfiles -u 1 src/**/*.bin dist/"
   },
   "repository": {
     "type": "git",
@@ -22,18 +24,26 @@
   },
   "homepage": "https://github.com/breno-alves/facebook-clone-backend#readme",
   "dependencies": {
+    "aws-sdk": "^2.1111.0",
     "cors": "^2.8.5",
+    "crypto": "^1.0.1",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "express-async-errors": "^3.1.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.4",
+    "multer-s3": "^2.10.0",
     "pg": "^8.7.3",
     "reflect-metadata": "^0.1.13",
-    "ts-node-dev": "^1.1.8",
+    "tsyringe": "^4.6.0",
     "typeorm": "^0.3.5"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
+    "@types/morgan": "^1.9.3",
+    "@types/multer": "^1.4.7",
+    "@types/multer-s3": "^2.7.11",
     "@typescript-eslint/eslint-plugin": "^4.3.0",
     "@typescript-eslint/parser": "^4.3.0",
     "copyfiles": "^2.4.1",
@@ -45,6 +55,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
+    "ts-node-dev": "^1.1.8",
     "tsconfig-paths": "^3.9.0",
     "tscpaths": "^0.0.9",
     "typescript": "^4.6.3"

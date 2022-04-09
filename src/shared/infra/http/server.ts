@@ -1,16 +1,17 @@
 import 'reflect-metadata';
 import 'dotenv/config';
+import 'express-async-errors';
 
 import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
+import morgan from 'morgan';
+import path from 'path';
 
-import 'express-async-errors';
-
-// import '@shared/infra/typeorm';
-
-// import routes from '@shared/infra/http/routes/';
+import routes from '@shared/infra/http/routes/';
 import AppError from '@shared/errors/AppError';
 import AppDataSource from '../typeorm';
+
+import '../../providers';
 
 AppDataSource.initialize()
   .then(() => console.log('Db has been initialized'))
@@ -20,8 +21,13 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(morgan('dev'));
+app.use(
+  '/files',
+  express.static(path.resolve(__dirname, '..', 'tmp', 'uploads')),
+);
 
-// app.use(routes);
+app.use(routes);
 
 app.use((err: Error, _: Request, response: Response, __: NextFunction) => {
   if (err instanceof AppError) {

@@ -3,15 +3,33 @@ version: '3.3'
 services:
   facebook_db:
     container_name: 'facebook_db'
-    image: postgres
-    environment:
-      POSTGRES_DB: facebook
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+    image: postgres:14.1-alpine
     volumes:
       - pg_data:/var/lib/postgresql/data
     ports:
       - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    networks: 
+      - facebook_network
+
+  facebook_backend:
+    container_name: 'facebook_backend'
+    build: 
+      context: .
+      dockerfile: Dockerfile.local
+    volumes:
+      - ./:/usr/app
+    ports:
+      - 3000:3000
+    networks: 
+      - facebook_network
+    depends_on:
+      - facebook_db
+
+networks:
+  facebook_network:
 
 volumes:
   pg_data:
