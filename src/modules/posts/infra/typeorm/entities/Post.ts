@@ -14,6 +14,9 @@ class Post {
   id: string;
 
   @Column()
+  user: string;
+
+  @Column()
   text: string;
 
   @OneToMany(() => Image, image => image.post, { eager: true })
