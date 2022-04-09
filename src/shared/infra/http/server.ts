@@ -10,6 +10,11 @@ import 'express-async-errors';
 
 // import routes from '@shared/infra/http/routes/';
 import AppError from '@shared/errors/AppError';
+import AppDataSource from '../typeorm';
+
+AppDataSource.initialize()
+  .then(() => console.log('Db has been initialized'))
+  .catch(err => console.log(`Error on DB Initialization: ${err}`));
 
 const app = express();
 
