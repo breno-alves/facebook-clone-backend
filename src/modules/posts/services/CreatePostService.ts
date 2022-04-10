@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 import CreatePostDTO from '../dtos/CreatePostDTO';
-import IPostRepository from '../infra/typeorm/repositories/IPostRepository';
+import IPostRepository from '../infra/typeorm/repositories/interfaces/IPostRepository';
 
 @injectable()
 class CreatePostService {

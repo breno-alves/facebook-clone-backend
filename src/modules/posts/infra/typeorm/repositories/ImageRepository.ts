@@ -2,7 +2,7 @@ import CreateImageDTO from '@modules/posts/dtos/CreateImageDTO';
 import { Repository } from 'typeorm';
 import Image from '../entities/Image';
 import Post from '../entities/Post';
-import IImageRepository from './IImageRepository';
+import IImageRepository from './interfaces/IImageRepository';
 import DataSource from '@shared/infra/typeorm';
 import AppError from '@shared/errors/AppError';
 

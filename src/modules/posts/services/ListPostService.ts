@@ -1,5 +1,5 @@
 import { inject, injectable } from 'tsyringe';
-import IPostRepository from '../infra/typeorm/repositories/IPostRepository';
+import IPostRepository from '../infra/typeorm/repositories/interfaces/IPostRepository';
 
 @injectable()
 class ListPostService {
