@@ -21,10 +21,13 @@ class Post {
   @Column()
   text: string;
 
-  @OneToMany(() => Image, image => image.post, { eager: true })
+  @OneToMany(() => Image, image => image.post, { eager: true, cascade: true })
   images: Image[];
 
-  @OneToMany(() => Comment, comment => comment.post, { eager: true })
+  @OneToMany(() => Comment, comment => comment.post, {
+    eager: true,
+    cascade: true,
+  })
   comments: Comment[];
 
   @OneToMany(() => Like, like => like.post, { eager: true })
