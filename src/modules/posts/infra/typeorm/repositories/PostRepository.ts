@@ -25,6 +25,9 @@ class PostRepository implements IPostRepository {
     return this.postRepository.find({
       skip: page,
       take: limit,
+      order: {
+        createdAt: 'DESC',
+      },
     });
   }
 

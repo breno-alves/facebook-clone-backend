@@ -23,8 +23,10 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(
-  '/files',
-  express.static(path.resolve(__dirname, '..', 'tmp', 'uploads')),
+  '/static',
+  express.static(
+    path.resolve(__dirname, '..', '..', '..', '..', 'tmp', 'uploads'),
+  ),
 );
 
 app.use(routes);
