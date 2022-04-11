@@ -2,7 +2,7 @@ import { Repository } from 'typeorm';
 import DataSource from '@shared/infra/typeorm/index';
 import Post from '../entities/Post';
 import CreatePostDTO from '@modules/posts/dtos/CreatePostDTO';
-import IPostRepository from './IPostRepository';
+import IPostRepository from './interfaces/IPostRepository';
 
 class PostRepository implements IPostRepository {
   private postRepository: Repository<Post>;
@@ -25,6 +25,9 @@ class PostRepository implements IPostRepository {
     return this.postRepository.find({
       skip: page,
       take: limit,
+      order: {
+        createdAt: 'DESC',
+      },
     });
   }
 

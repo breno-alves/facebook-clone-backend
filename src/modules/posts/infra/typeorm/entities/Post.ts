@@ -6,7 +6,9 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import Comment from './Comment';
 import Image from './Image';
+import Like from './Likes';
 
 @Entity('posts')
 class Post {
@@ -19,8 +21,17 @@ class Post {
   @Column()
   text: string;
 
-  @OneToMany(() => Image, image => image.post, { eager: true })
+  @OneToMany(() => Image, image => image.post, { eager: true, cascade: true })
   images: Image[];
+
+  @OneToMany(() => Comment, comment => comment.post, {
+    eager: true,
+    cascade: true,
+  })
+  comments: Comment[];
+
+  @OneToMany(() => Like, like => like.post, { eager: true })
+  likes: Like[];
 
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;

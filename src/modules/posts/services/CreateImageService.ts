@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 import CreateImageDTO from '../dtos/CreateImageDTO';
-import IImageRepository from '../infra/typeorm/repositories/IImageRepository';
+import IImageRepository from '../infra/typeorm/repositories/interfaces/IImageRepository';
 
 @injectable()
 class CreateImageService {
