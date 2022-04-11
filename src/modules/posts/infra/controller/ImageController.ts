@@ -10,7 +10,7 @@ class ImageController {
     console.log(destination, filename);
     const createImageService = container.resolve(CreateImageService);
     const image = await createImageService.execute({
-      url: `http://localhost:3000/static/${filename}`,
+      url: `${process.env.BASE_URL}/static/${filename}`,
       postId: id,
     });
 
