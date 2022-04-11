@@ -1,8 +1,6 @@
-# BUILDER STATE
-
 FROM node:16
 
-WORKDIR /usr/app
+WORKDIR /usr/app/
 
 COPY . .
 
